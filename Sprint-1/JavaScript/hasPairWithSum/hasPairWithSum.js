@@ -6,22 +6,22 @@
  *
  * Originally:
  * Time Complexity: O(n²) - for each number, the inner loop scans the
- *   remaining numbers, so about n * (n - 1) / 2 pair checks.
- * 
+ * remaining numbers, so about n * (n - 1) / 2 pair checks.
+ *
  * Space Complexity: O(1) - only the loop counters i and j are used.
- * 
+ *
  * Optimal Time Complexity: O(n) - every number must be read at least once,
- *   and a Set gives O(1) average lookups, so one pass is enough
+ * and a Set gives O(1) average lookups, so one pass is enough
  *
  * After Refactor (reduced from quadratic to linear time by remembering the
  * numbers already seen in a Set instead of re-scanning the list):
- * 
+ *
  * Time Complexity: O(n) - one loop, with O(1) average has() and add().
- * 
+ *
  * Space Complexity: O(n) - visitedNumbers can hold up to n numbers.
- * 
+ *
  * Optimal Time Complexity: O(n) - every number must be read at least once,
- *   so we can't do better than linear.
+ * so we can't do better than linear.
  *
  * @param {Array<number>} numbers - Array of numbers to search through
  * @param {number} target - Target sum to find
