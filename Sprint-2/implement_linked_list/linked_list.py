@@ -1,20 +1,21 @@
+from typing import Any, Optional
 # A "Node" is a single building block of our list.
 # Each node holds a value and two pointers: 'next' (forward) and 'previous' (backward).
 class Node:
     __slots__ = ("value", "next", "previous")
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-        self.previous = None
+    def __init__(self, value: Any)-> None:
+        self.value: Any = value
+        self.next: Optional[Node] = None
+        self.previous: Optional[Node] = None
 
 
 # A Doubly Linked List keeps track of both ends (head and tail).
 class LinkedList:
-    def __init__(self):
-        self.head = None
-        self.tail = None
+    def __init__(self) -> None:
+        self.head: Optional[Node] = None
+        self.tail: Optional[Node] = None
 
-    def push_head(self, value):
+    def push_head(self, value: Any):
         """Add a new item to the front of the list in O(1) time."""
         new_node = Node(value)
 
@@ -32,7 +33,7 @@ class LinkedList:
         # We return the node itself so it can be used as a "handle" later
         return new_node
 
-    def pop_tail(self):
+    def pop_tail(self) -> Any:
         """Remove and return the item from the end of the list in O(1) time."""
         # If the list is empty, there is nothing to remove
         if self.tail is None:
@@ -46,7 +47,7 @@ class LinkedList:
 
         return removed_value
 
-    def remove(self, node):
+    def remove(self, node: Node) -> None :
         """Remove a specific node from the list using its reference in O(1) time."""
 
         # Scenario 1: It's the only item in the list
