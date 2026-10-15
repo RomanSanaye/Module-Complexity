@@ -1,6 +1,7 @@
 # A "Node" is a single building block of our list.
 # Each node holds a value and two pointers: 'next' (forward) and 'previous' (backward).
 class Node:
+    __slots__ = ("value", "next", "previous")
     def __init__(self, value):
         self.value = value
         self.next = None
@@ -40,21 +41,14 @@ class LinkedList:
         # Save the value so we can return it at the end
         removed_value = self.tail.value
 
-        # If there is only one item left in the list
-        if self.head == self.tail:
-            self.head = None
-            self.tail = None
-        else:
-            # Move the tail pointer back to the previous node
-            self.tail = self.tail.previous
-            # Cut off the old tail by clearing its 'next' reference
-            self.tail.next = None
+        # Delegate the actual removal logic to the general remove() method (DRY principle)
+        self.remove(self.tail)
 
         return removed_value
 
     def remove(self, node):
         """Remove a specific node from the list using its reference in O(1) time."""
-        
+
         # Scenario 1: It's the only item in the list
         if self.head == self.tail and node == self.head:
             self.head = None
